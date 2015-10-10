@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="50" height="13" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="flashman" tilewidth="16" tileheight="16" spacing="1" margin="2">
+  <image source="flashman.png" trans="ff00ff" width="403" height="353"/>
+ </tileset>
+ <layer name="background" width="50" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztlmEKgCAMRtUSOoK/6ggdo/L+B+oTFGRNikxEafDAHGoPZUyIa0igwABGMt7ADg6ggSV56+cnT2otXRfn4nl9c36ACwPmTBZP7j5P4WLtxEN24vG/q3oeqbrUmkcpevb4on7U9nAOpkGX2CM4BGr/21sPQyhxJ6l6xfU/tPehvQ6Xo3cRUMwe6uVZ7vsEh/VGMw==
+  </data>
+ </layer>
+ <objectgroup name="ground">
+  <object x="0" y="192" width="400" height="16"/>
+  <object x="400" y="160" width="16" height="48"/>
+  <object x="416" y="144" width="16" height="64"/>
+  <object x="432" y="128" width="16" height="80"/>
+  <object x="448" y="144" width="16" height="64"/>
+  <object x="464" y="176" width="16" height="32"/>
+  <object x="480" y="192" width="320" height="16"/>
+ </objectgroup>
+</map>

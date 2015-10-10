@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="25" height="29" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="flashman" tilewidth="16" tileheight="16" spacing="1" margin="2">
+  <image source="flashman.png" trans="ff00ff" width="403" height="353"/>
+  <tile id="161">
+   <animation>
+    <frame tileid="115" duration="800"/>
+    <frame tileid="46" duration="500"/>
+   </animation>
+  </tile>
+  <tile id="162">
+   <animation>
+    <frame tileid="92" duration="800"/>
+    <frame tileid="23" duration="500"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer name="background" width="25" height="29">
+  <data encoding="base64" compression="zlib">
+   eJy1VlsOwyAMo9uQdgS+tiP0qz3CHr3DbrH7a1QrUuSRQgyLZKklAld2kuLcb/iIe8Qz4hBxjDht6ysWWF8yZ5Ri3XMxYCA4hm3vBGedFY5AcATlrKvCORIcY4FjgnfWjxkgPUZOT3AkP0pIHIzn0g/0PcfBeJ78yOmD67PjPK/VqqU/tNrV0KJVLRitbkYOpj/eRo6WefVPP6ye95hXuf+FzLOzRM4q1Bu17NEfqHeAb+jRH6h3KV8T2B+oRSlfEy+3r5XM+0y+JrAHUYtcXtadfNYC6ybdhR7uex/ykN+DFtYeZDisc5fhsN7hGA6L3iyHrAvpNd59tVrCuvoA27Iu1Q==
+  </data>
+ </layer>
+ <objectgroup name="ground">
+  <object x="80" y="0" width="208" height="16"/>
+  <object x="80" y="16" width="16" height="448"/>
+  <object x="96" y="448" width="288" height="16"/>
+  <object x="272" y="352" width="112" height="16"/>
+  <object x="256" y="336" width="16" height="16"/>
+  <object x="272" y="16" width="16" height="336"/>
+  <object x="144" y="256" width="80" height="16"/>
+  <object x="208" y="272" width="16" height="112"/>
+  <object x="144" y="272" width="16" height="112"/>
+  <object x="160" y="80" width="48" height="16"/>
+  <object x="112" y="128" width="48" height="16"/>
+  <object x="208" y="128" width="48" height="16"/>
+ </objectgroup>
+</map>
