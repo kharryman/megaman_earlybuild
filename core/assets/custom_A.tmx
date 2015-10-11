@@ -5,7 +5,7 @@
  </tileset>
  <layer name="background" width="50" height="13">
   <data encoding="base64" compression="zlib">
-   eJzLZGBgyALizCFOHxrFo3gUj+JRPIpH8SgeJLgZiFtIoLcD8Q4SaFLNJ5cGADt70ZY=
+   eJztzDERACAMwMCgnXoCYRUAElqOMcNftuSAlCRJ0jcTCOpd1260+3/tAffUWnY=
   </data>
  </layer>
  <objectgroup name="ground">
