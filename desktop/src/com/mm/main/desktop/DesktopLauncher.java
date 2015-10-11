@@ -12,11 +12,10 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		config.height = (int)screenSize.height;
-		config.width = (int)screenSize.width;
-		//config.fullscreen = true;
+		config.width = (int)screenSize.width / 2; //remove the "/ 2" if you are only using 1 monitor.
+		config.fullscreen = true;
 		config.vSyncEnabled = true;
 
-		
 		new LwjglApplication(new MegaManGame(), config);
 	}
 }
