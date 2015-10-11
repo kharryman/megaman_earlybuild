@@ -1,15 +1,19 @@
 package com.mm.screens;
 
+import java.text.DecimalFormat;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -52,7 +56,12 @@ public class PlayScreen implements Screen {
 		//create a class to load maps from a menu here and use the below code to load the maps/////////
 		
 		mapLoader = new TmxMapLoader();
-		map = mapLoader.load("flashman_mapB.tmx"); //choose map to load
+		//prevent graphic tearing on maps?
+		TmxMapLoader.Parameters params = new TmxMapLoader.Parameters();
+		params.textureMagFilter = TextureFilter.Nearest;
+		params.textureMinFilter = TextureFilter.Nearest;
+
+		map = mapLoader.load("flashman_A.tmx", params); //choose map to load
 		renderer = new OrthogonalTiledMapRenderer(map, 1/ppm); //render map to screen
 		gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0); //set starting position for camera
 		
@@ -95,7 +104,8 @@ public class PlayScreen implements Screen {
 		
 		//gamecam.position.y = player.b2body.getPosition().y;
 		gamecam.position.x = player.b2body.getPosition().x;
-			
+		
+
 			
 			
 			
@@ -110,6 +120,8 @@ public class PlayScreen implements Screen {
 		gamecam.update();
 		renderer.setView(gamecam);
 	}
+	
+	
 	
 	public void handleInput(float dt){
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
