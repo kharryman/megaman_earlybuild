@@ -1,7 +1,5 @@
 package com.mm.screens;
 
-import java.text.DecimalFormat;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
@@ -9,11 +7,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -39,6 +37,7 @@ public class PlayScreen implements Screen {
 	//tiled map variables
 	private TmxMapLoader mapLoader;
 	private TiledMap map;
+	MapProperties mapProperties;
 	private OrthogonalTiledMapRenderer renderer;
 	
 	//Box2d variables
@@ -61,13 +60,14 @@ public class PlayScreen implements Screen {
 		params.textureMagFilter = TextureFilter.Nearest;
 		params.textureMinFilter = TextureFilter.Nearest;
 
-		map = mapLoader.load("custom_B.tmx", params); //choose map to load============================================>>>
+		map = mapLoader.load("custom_A.tmx", params); //choose map to load============================================>>>
+		mapProperties = map.getProperties();
 		renderer = new OrthogonalTiledMapRenderer(map, 1/ppm); //render map to screen
 		gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0); //set starting position for camera
 		
 		world = new World(new Vector2(0, -10), true);
 		b2dr = new Box2DDebugRenderer();
-		player = new MegaMan(world, 200,650); // world and starting xy-axis
+		player = new MegaMan(world, 210,650); // world and starting xy-axis
 		
 		
 		// the following will be created in their own classes later on
@@ -99,11 +99,19 @@ public class PlayScreen implements Screen {
 		
 		
 		//this attaches the camera to the player and moves it when he moves. adjust it later
+		float tempX = 0;
+//		gamecam.position.y = player.b2body.getPosition().y + 0.40f;
+		if(player.b2body.getPosition().x <= 2f){
+			tempX = 2f; // <---find a way to find where the camera should stop dynamically here
+		}
+		else if(player.b2body.getPosition().x >= 5.8){
+			tempX = 5.8f;
+		}
+		else{
+			tempX = player.b2body.getPosition().x;
+		}
 		
-		
-		
-		gamecam.position.y = player.b2body.getPosition().y;
-		//gamecam.position.x = player.b2body.getPosition().x;
+		gamecam.position.x = tempX; //game cam stop at 2
 		
 
 			
@@ -160,8 +168,8 @@ public class PlayScreen implements Screen {
 		
 		renderer.render();
 		
-		//render box2d objectsa
-		b2dr.render(world, gamecam.combined); //remove this when you want to hide hitboxes on world and player objects
+		//render box2d objects
+		b2dr.render(world, gamecam.combined); //remove this when you want to hide hit-boxes on world and player objects (will also hide the player's hit box)
 		
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 		hud.stage.draw();
