@@ -61,13 +61,13 @@ public class PlayScreen implements Screen {
 		params.textureMagFilter = TextureFilter.Nearest;
 		params.textureMinFilter = TextureFilter.Nearest;
 
-		map = mapLoader.load("flashman_A.tmx", params); //choose map to load
+		map = mapLoader.load("custom_B.tmx", params); //choose map to load============================================>>>
 		renderer = new OrthogonalTiledMapRenderer(map, 1/ppm); //render map to screen
 		gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0); //set starting position for camera
 		
 		world = new World(new Vector2(0, -10), true);
 		b2dr = new Box2DDebugRenderer();
-		player = new MegaMan(world, 200,200); // world and starting xy-axis
+		player = new MegaMan(world, 200,650); // world and starting xy-axis
 		
 		
 		// the following will be created in their own classes later on
@@ -102,8 +102,8 @@ public class PlayScreen implements Screen {
 		
 		
 		
-		//gamecam.position.y = player.b2body.getPosition().y;
-		gamecam.position.x = player.b2body.getPosition().x;
+		gamecam.position.y = player.b2body.getPosition().y;
+		//gamecam.position.x = player.b2body.getPosition().x;
 		
 
 			
@@ -135,8 +135,9 @@ public class PlayScreen implements Screen {
 			//gamecam.position.x -= 200 * dt; //temp
 			player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
 		}
-		if(Gdx.input.isKeyPressed(Keys.S)){
+		if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
 			//gamecam.position.y -= 200 * dt; //temp
+			Gdx.app.exit();
 		}
 		if(Gdx.input.isKeyPressed(Keys.D) && player.b2body.getLinearVelocity().x <= 1){
 			//gamecam.position.x += 200 * dt; //temp
